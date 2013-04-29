@@ -1,6 +1,6 @@
 (defproject tableau "0.0.1"
   :source-paths ["src-clj"]
-  :depedencies [[org.clojure/clojure "1.4.0"]
+  :dependencies [[org.clojure/clojure "1.4.0"]
                 [compojure "1.0.4"]
                 [hiccup "1.0.3"]]
   :plugins [[lein-cljsbuild "0.3.0"]
