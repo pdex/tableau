@@ -7,7 +7,7 @@
                 [hiccup "1.0.3"]]
   :plugins [[lein-cljsbuild "0.3.0"]
             [lein-ring "0.7.0"]]
-  :hooks [leiningen.cljsbuild]
+  ;;:hooks [leiningen.cljsbuild]
   :cljsbuild {
     :builds [],
     :build {
