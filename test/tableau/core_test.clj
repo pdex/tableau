@@ -30,11 +30,13 @@
 
 (deftest test-drawing
   (testing "Test drawing 1 card"
-    (let [card (draw 1 cards)]
-      (is (= card [:ace]))))
+    (let [[card rest] (draw 1 cards)]
+      (is (= card [:ace]))
+      (is (= rest [:king :queen :jack]))))
   (testing "Test drawing 2 cards"
-    (let [card (draw 2 cards)]
-      (is (= card [:ace :king])))))
+    (let [[card rest] (draw 2 cards)]
+      (is (= card [:ace :king]))
+      (is (= rest [:queen :jack])))))
 
 (deftest test-shuffling
   (testing "Test shuffling")
