@@ -26,3 +26,34 @@
 ;;      (recur (second (draw 1 rest))
 ;;             (dec cnt)
 ;;             new-hands))))
+
+(defn update-state [current-state event]
+  ;;return new state
+  )
+
+(defn end-state [start-state events]
+  (reduce update-state start-state events))
+
+(defn consequences [current-state event]
+  ;; return a sequence of new events
+  )
+
+(defn apply-consequences [current-state event]
+  (reduce update-state current-state
+          (consequences current-state event)))
+
+(defn recursive-consequences [current-state event]
+  (reduce (fn [state event]
+            (recursive-consequences
+              state (update-state state event)))
+          current-state
+          (consequences current-state event)))
+
+(defn chain-consequences [initial-state consequence-fns]
+  (loop [state initial-state
+        fs consequence-fns
+        output []]
+    (if (seq fs)
+      (let [events ((first fs) state)
+            new-state (reduce update-state state events)]
+        (recur new-state (rest fs) (into output events))) output)))
