@@ -23,7 +23,7 @@
 (deftest test-dealing
   (println (put-card-in-hand (first cards) :player1 hands))
   (testing "Test dealing 1 card to each player"
-    (let [[new-hands rest] (deal 1 cards hands)]
+    (let [[new-hands rest] (deal 1 cards players hands)]
       (println "dealing")
       (println new-hands)
       ;;(is (= (new-hands :player1) [:ace]))

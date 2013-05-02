@@ -10,13 +10,12 @@
 (defn put-cards-in-hands [cards players hands]
   (apply merge (map #(put-card-in-hand %1 %2 hands) cards players)))
 
-(defn deal [n cards hands]
-  (let [players (keys hands)]
-    (loop [new-hands hands rest cards cnt n]
-      (if (zero? cnt)
-        [new-hands rest]
-      (let [[delt remainder] (draw (count players) rest)]
-        (recur (put-cards-in-hands delt players new-hands) remainder (dec cnt)))))))
+(defn deal [n cards players hands]
+  (loop [new-hands hands rest cards cnt n]
+    (if (zero? cnt)
+      [new-hands rest]
+    (let [[delt remainder] (draw (count players) rest)]
+      (recur (put-cards-in-hands delt players new-hands) remainder (dec cnt))))))
 
 ;;(defn deal [n cards hands]
 ;;  (loop [rest cards
